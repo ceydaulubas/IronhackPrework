@@ -7,7 +7,7 @@ const myRover = {
     travelLog: []
 };
 
-
+//progress brach
 // Direction attribute
 // ITERATION 2| Turning the rover
 function turnLeft(rover) {
