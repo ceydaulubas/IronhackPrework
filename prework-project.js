@@ -4,8 +4,10 @@ const myRover = {
     x: 0,
     y: 0,
     direction: 'N',
-    travelLog: []
+    travelLog: [{ "prevX": 0, "prevY": 0 }]
 };
+
+const borderCom= "Rover can't get out from border";
 
 //progress brach
 // Direction attribute
@@ -25,8 +27,8 @@ function turnLeft(rover) {
             rover.direction = 'S';
             break;
     }
-    console.log(`myRover turns to: rover.direction`);
-    return rover.direction;
+    //console.log("Turned left and new direction :" + rover.direction);
+    return ("Turned left and new direction :" + rover.direction);
 }
 
 function turnRight(rover) {
@@ -44,17 +46,20 @@ function turnRight(rover) {
             rover.direction = 'N';
             break;
     }
-    // console.log("myRover turns to: " + rover.direction);
-    return rover.direction;
+    //console.log("Turn right and new direction: " + rover.direction);
+    return ("Turn right and new direction: " + rover.direction);
 }
 
 // Bonus1
 //ITERATION 3| Moving the rover
 function moveForward(rover) {
+    rover.travelLog.push({ "prevX": rover.x, "prevY": rover.y });
+
     if ((rover.x === 0 && rover.direction === 'W') || (rover.y === 0 && rover.direction === 'N') ||
         (rover.y >= 10 && rover.direction === 'S') || (rover.x >= 10 && rover.direction === 'E')) {
-        console.log("rover can't move");
-        return rover;
+        //console.log("Rover can't get out from border");
+        //return rover;
+        return borderCom;
     }
     else {
         switch (rover.direction) {
@@ -71,7 +76,7 @@ function moveForward(rover) {
                 rover.y--;
                 break;
         }
-       // console.log(rover);
+        // console.log(rover);
         return rover;
     }
 }
@@ -79,10 +84,13 @@ function moveForward(rover) {
 
 //Bonus 2
 function moveBackward(rover) {
+    rover.travelLog.push({ "prevX": rover.x, "prevY": rover.y });
+
     if ((rover.x === 0 && rover.direction === 'E') || (rover.y === 0 && rover.direction === 'S') ||
         (rover.y >= 10 && rover.direction === 'N') || (rover.x >= 10 && rover.direction === 'W')) {
-        console.log("rover can't move");
-        return rover;
+        //console.log("Rover can't get out from border");
+        //return rover;
+        return borderCom;
     }
     else {
         switch (rover.direction) {
@@ -99,7 +107,7 @@ function moveBackward(rover) {
                 rover.y--;
                 break;
         }
-        console.log(rover);
+        //console.log(rover);
         return rover;
     }
 }
@@ -148,5 +156,5 @@ function command(rover, orders) {
         }
     }
 }
-command(myRover, 'rffrfflfrff'); 
+command(myRover, 'rffrfflfrff');
 
