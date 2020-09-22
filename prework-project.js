@@ -1,5 +1,4 @@
-// Rover object goes here:
-//ITERATION 1| The rover object
+//ITERATION 1| Creating the rover object
 const myRover = {
     x: 0,
     y: 0,
@@ -9,7 +8,6 @@ const myRover = {
 
 const borderCom= "Rover can't get out from border";
 
-//progress brach
 // Direction attribute
 // ITERATION 2| Turning the rover
 function turnLeft(rover) {
@@ -50,8 +48,8 @@ function turnRight(rover) {
     return ("Turn right and new direction: " + rover.direction);
 }
 
-// Bonus1
 //ITERATION 3| Moving the rover
+// Bonus 1 | Enforce boundaries
 function moveForward(rover) {
     rover.travelLog.push({ "prevX": rover.x, "prevY": rover.y });
 
@@ -82,7 +80,7 @@ function moveForward(rover) {
 }
 //console.log(moveForward(myRover));
 
-//Bonus 2
+//Bonus 2 | Move backwards
 function moveBackward(rover) {
     rover.travelLog.push({ "prevX": rover.x, "prevY": rover.y });
 
@@ -113,29 +111,8 @@ function moveBackward(rover) {
 }
 //console.log(moveBackward(myRover));
 
-/* making with switch
-function command(rover, orders) {
-    for (let i = 0; i < orders.length; i++) {
-        let order = orders[i];
-        switch (order) {
-            case 'l': // left
-                turnLeft(rover, order);
-                break;
-            case 'r': // right
-                turnRight(rover, order);
-                break;
-            case 'f': // forward
-                moveForward(rover, order);
-                break;
-            case 'b': //backward
-                moveBackward(rover, order);
-        }
-        console.log(rover);
-    }
-}
-*/
 
-//ITERATION 4| Commands & Bonus 3
+//ITERATION 4| Commands & Bonus 3 | Validate inputs
 function command(rover, orders) {
     for (let i = 0; i < orders.length; i++) {
         let order = orders[i];
@@ -158,3 +135,24 @@ function command(rover, orders) {
 }
 command(myRover, 'rffrfflfrff');
 
+/* making with switch
+function command(rover, orders) {
+    for (let i = 0; i < orders.length; i++) {
+        let order = orders[i];
+        switch (order) {
+            case 'l': // left
+                turnLeft(rover, order);
+                break;
+            case 'r': // right
+                turnRight(rover, order);
+                break;
+            case 'f': // forward
+                moveForward(rover, order);
+                break;
+            case 'b': //backward
+                moveBackward(rover, order);
+        }
+        console.log(rover);
+    }
+}
+*/
